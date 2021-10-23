@@ -18,15 +18,15 @@ const valor_carta = ['1','2','3','4','5','6','7','sota', 'caballo','rey'];
 const baraja= [];
 
 nombre_palo.forEach((palo, indexPalo) => {
+    baraja[indexPalo]=[];
     valor_carta.forEach((valor, indexValor) => {
-        baraja[indexPalo*10+indexValor] = new Carta(palo, valor)
+        baraja[indexPalo][indexValor] = new Carta(palo, valor)
     });
 });
+console.log(baraja);
 
-baraja.forEach(e => console.log(e.nombre_Carta()));
-
-jugadores = [];
-cant_jugadores = 3;
+let jugadores = [];
+let cant_jugadores = 3;
 
 for(let i= 0; i< cant_jugadores; i++){ jugadores[i]= []}
 
@@ -39,4 +39,3 @@ for (let i=0; i<40; i++){
     jugadores[(i+jugadorInicial)%cant_jugadores].push(cartasARepartir.splice(numAleatorio(0,39-i), 1)[0]);
 }
 console.log(jugadores);
-console.log(cartasARepartir);

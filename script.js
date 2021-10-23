@@ -1,5 +1,5 @@
 function numAleatorio(min, max){
-    return Math.trunc(Math.random() * (max - min + 1) + 1);
+    return Math.trunc(Math.random() * (max - min + 1));
 }
 
 class Carta{
@@ -36,7 +36,7 @@ for (let i = 0; i<40; i++){ cartasARepartir[i]=i}
 jugadorInicial = numAleatorio(1, cant_jugadores);
 
 for (let i=0; i<40; i++){
-    jugadores[(i+jugadorInicial)%cant_jugadores].push(cartasARepartir.splice(numAleatorio(1,40-i)-1, 1));
+    jugadores[(i+jugadorInicial)%cant_jugadores].push(cartasARepartir.splice(numAleatorio(0,39-i), 1)[0]);
 }
 console.log(jugadores);
 console.log(cartasARepartir);

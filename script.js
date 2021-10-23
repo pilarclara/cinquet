@@ -59,3 +59,11 @@ for (let i=0; i<cant_jugadores; i++){
     jugadores[i]= new Mano_Cartas(distribucion_cartas[i]);
 }
 console.log(jugadores);
+
+function buscar5oro(){
+    let jugador;
+    jugadores.forEach((element, index) => {if (element.cartas[0][4]) jugador= index; }); // si pongo aquí el return devuelve undefined
+    return jugador
+}
+
+console.log(buscar5oro());

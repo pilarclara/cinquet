@@ -44,7 +44,7 @@ let cant_jugadores = 3;
 
 for(let i= 0; i< cant_jugadores; i++){ distribucion_cartas[i]= []}
 
-cartasARepartir = [];
+let cartasARepartir = [];
 for (let i = 0; i<40; i++){ cartasARepartir[i]=i}
 
 const jugadorInicial = numAleatorio(1, cant_jugadores);
@@ -67,3 +67,7 @@ function buscar5oro(){
 }
 
 console.log(buscar5oro());
+
+const hola=()=>{ console.log("hola")}
+
+export {hola}

@@ -27,7 +27,7 @@ class Mano_Cartas{
 }
 
 const nombre_palo = ['oro', 'copa', 'espada', 'basto'];
-const valor_carta = ['1','2','3','4','5','6','7','sota', 'caballo','rey'];
+const valor_carta = ['1','2','3','4','5','6','7','10_sota', '11_caballo','12_rey'];
 
 const baraja= [];
 
@@ -47,12 +47,12 @@ for(let i= 0; i< cant_jugadores; i++){ distribucion_cartas[i]= []}
 cartasARepartir = [];
 for (let i = 0; i<40; i++){ cartasARepartir[i]=i}
 
-jugadorInicial = numAleatorio(1, cant_jugadores);
+const jugadorInicial = numAleatorio(1, cant_jugadores);
 
 for (let i=0; i<40; i++){
     distribucion_cartas[(i+jugadorInicial)%cant_jugadores].push(cartasARepartir.splice(numAleatorio(0,39-i), 1)[0]);
 }
-console.log(distribucion_cartas);
+console.log(distribucion_cartas.sort((a,b)=>a-b)); // por qué no funciona el sort()
 
 let jugadores = [];
 for (let i=0; i<cant_jugadores; i++){

@@ -21,7 +21,7 @@ const mostrarCartasJugador= ()=>{
 
 const iniciar_juego= ()=>{
     partida = new Partida(3,2);
-
+    
     mostrarCartasJugador();
     document.querySelectorAll(".carta").forEach(c =>c.addEventListener('click', mover_Carta));
 }

@@ -1,14 +1,3 @@
-/*
-class Carta{
-    constructor(palo, valor){
-        this._palo = palo;
-        this._valor = valor;
-    }
-    get palo(){ return this._palo}
-    get valor(){ return this._valor}
-    nombre_Carta(){ return `${this._palo}_${this._valor}`}
-}
-*/
 function numAleatorio(min, max){
     return Math.trunc(Math.random() * (max - min + 1));
 }
@@ -16,37 +5,42 @@ function numAleatorio(min, max){
 class Mano_Cartas{
     constructor(cartasElegidas){
         this._cartas= cartasElegidas;
-        //cartasElegidas.forEach(c =>{ this._cartas.push(new Carta(nombre_palo[Math.trunc(c/10)],valor_carta[c%10]))})
     }
     get cartas(){ return this._cartas}
+    numero_cartas(){ return this._cartas.length}
 }
 class Partida{
     constructor(cant_jugadores,dificultad){
+        this._cantidad_jugadores = cant_jugadores;
         this._jugadores = [];
         for (let i=0; i<cant_jugadores; i++){
-            this._jugadores[i]= new Mano_Cartas(this.repartirCartas(cant_jugadores)[i]);
+            this._jugadores[i]= new Mano_Cartas(this.repartirCartas()[i]);
         }
         console.log(this._jugadores);
-//        console.log(buscar5oro());
+        this._turno = this.buscar5oro();
+
+        // _turno +=1%cantidad_jugadores
     }
-    repartirCartas(cant_jugadores){
+    repartirCartas(){
         let cartas_Repartidas = [];
-        for(let i= 0; i< cant_jugadores; i++){ cartas_Repartidas[i]= []}
+        for(let i= 0; i< this._cantidad_jugadores; i++){ cartas_Repartidas[i]= []}
         let cartasARepartir = [];
         for (let i = 0; i<40; i++){ cartasARepartir[i]=i}
-        const primeroARepartir = numAleatorio(1, cant_jugadores);
+        const primeroARepartir = numAleatorio(1, this._cantidad_jugadores);
         for (let i=0; i<40; i++){
-            cartas_Repartidas[(i+primeroARepartir)%cant_jugadores].push(cartasARepartir.splice(numAleatorio(0,39-i), 1)[0]);
+            cartas_Repartidas[(i+primeroARepartir)%this._cantidad_jugadores].push(cartasARepartir.splice(numAleatorio(0,39-i), 1)[0]);
         }
         cartas_Repartidas.forEach(e=>e.sort((a,b)=>a-b));
         console.log(cartas_Repartidas);
         return cartas_Repartidas;
     }    
     buscar5oro(){
-        let jugadorInicial;
-        this._jugadores.forEach((element, index) => {if (element.cartas[0][4]) jugadorInicial= index; }); // si pongo aquí el return devuelve undefined
-        return jugadorInicial;
+        let inicial = 0;
+        for (let i = 0; i<3; i++){ this._jugadores[i].cartas.includes(4) }
+        this._jugadores.forEach((element, index) => {if (element.cartas.includes(4)) inicial = index});
+        return inicial
     }
+
     devolverManoJugador(num_jugador){
         return this._jugadores[num_jugador];
     }

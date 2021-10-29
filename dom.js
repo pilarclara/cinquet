@@ -1,4 +1,4 @@
-import {Partida, Carta, Mano_Cartas} from "./cinquet.js";
+import {Partida, Mano_Cartas} from "./cinquet.js";
 
 let partida;
 
@@ -14,7 +14,6 @@ const mostrarCartasJugador= ()=>{
     let mano = partida.devolverManoJugador(0);
     console.log(mano);
     for (let i= 0; i<mano.cartas.length; i++) mostrarCarta(mano.cartas[i].nombre_Carta());
-    mostrarCarta('oro_4');
 }
 
 const iniciar_juego= ()=>{

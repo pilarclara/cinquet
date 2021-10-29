@@ -1,3 +1,4 @@
+/*
 class Carta{
     constructor(palo, valor){
         this._palo = palo;
@@ -7,16 +8,15 @@ class Carta{
     get valor(){ return this._valor}
     nombre_Carta(){ return `${this._palo}_${this._valor}`}
 }
-
-
+*/
 function numAleatorio(min, max){
     return Math.trunc(Math.random() * (max - min + 1));
 }
 
 class Mano_Cartas{
     constructor(cartasElegidas){
-        this._cartas= [];
-        cartasElegidas.forEach(c =>{ this._cartas.push(new Carta(nombre_palo[Math.trunc(c/10)],valor_carta[c%10]))})
+        this._cartas= cartasElegidas;
+        //cartasElegidas.forEach(c =>{ this._cartas.push(new Carta(nombre_palo[Math.trunc(c/10)],valor_carta[c%10]))})
     }
     get cartas(){ return this._cartas}
 }
@@ -42,7 +42,8 @@ class Partida{
         for (let i=0; i<40; i++){
             cartas_Repartidas[(i+primeroARepartir)%cant_jugadores].push(cartasARepartir.splice(numAleatorio(0,39-i), 1)[0]);
         }
-        console.log(cartas_Repartidas.sort((a,b)=>a-b)); // por qué no funciona el sort()
+        cartas_Repartidas.forEach(e=>e.sort((a,b)=>a-b));
+        console.log(cartas_Repartidas);
         return cartas_Repartidas;
     }    
     buscar5oro(){
@@ -55,4 +56,4 @@ class Partida{
     }
 }
 
-export {Partida, Carta, Mano_Cartas}
+export {Partida, Mano_Cartas}

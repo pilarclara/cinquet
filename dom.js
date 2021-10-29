@@ -1,10 +1,13 @@
 import {Partida, Mano_Cartas} from "./cinquet.js";
 
+const nombre_palo = ['oro', 'copa', 'espada', 'basto'];
+const valor_carta = ['1','2','3','4','5','6','7','10_sota', '11_caballo','12_rey'];
+
 let partida;
 
 function mostrarCarta(carta){
     let nueva_carta = document.createElement('img');
-    nueva_carta.src = `/public/images/baraja_espanyola/${carta}.png`;
+    nueva_carta.src = `/public/images/baraja_espanyola/${nombre_palo[Math.trunc(carta/10)]}_${valor_carta[carta%10]}.png`;
     nueva_carta.id = carta;
     nueva_carta.classList.toggle("carta");
     document.querySelector('#cartas_jugador') .appendChild(nueva_carta)
@@ -13,7 +16,7 @@ function mostrarCarta(carta){
 const mostrarCartasJugador= ()=>{
     let mano = partida.devolverManoJugador(0);
     console.log(mano);
-    for (let i= 0; i<mano.cartas.length; i++) mostrarCarta(mano.cartas[i].nombre_Carta());
+    for (let i= 0; i<mano.cartas.length; i++) mostrarCarta(mano.cartas[i]);
 }
 
 const iniciar_juego= ()=>{

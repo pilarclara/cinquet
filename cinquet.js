@@ -20,10 +20,6 @@ class Mano_Cartas{
     }
     get cartas(){ return this._cartas}
 }
-
-const nombre_palo = ['oro', 'copa', 'espada', 'basto'];
-const valor_carta = ['1','2','3','4','5','6','7','10_sota', '11_caballo','12_rey'];
-
 class Partida{
     constructor(cant_jugadores,dificultad){
         this._jugadores = [];

@@ -30,7 +30,11 @@ const mover_Carta = e =>{
     console.log(e.target.id);
     document.querySelector("#cartas_jugador").removeChild(e.target);
     e.target.removeEventListener('click', mover_Carta);
-    document.querySelector("#cartas_jugadas").appendChild(e.target);
+    //document.querySelector("#cartas_jugadas").appendChild(e.target);
+    if (e.target.id <=9) document.querySelector("#zona_oro").appendChild(e.target);
+    if (e.target.id >=10 && e.target.id <=19) document.querySelector("#zona_copa").appendChild(e.target);
+    if (e.target.id >=20 && e.target.id <=29) document.querySelector("#zona_espada").appendChild(e.target);
+    if (e.target.id >=30 && e.target.id <=39) document.querySelector("#zona_basto").appendChild(e.target);
 }
 
 document.addEventListener('keyup', iniciar_juego);

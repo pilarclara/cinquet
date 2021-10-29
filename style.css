@@ -16,11 +16,35 @@
     grid-template-rows: 1fr 3fr 1fr;
 }
 
-#cartas_jugadas{ grid-area:2/2/3/3; background-color: blanchedalmond;}
+#cartas_jugadas{ grid-area:2/2/3/3; background-color: blanchedalmond;
+display: grid;
+grid-template-columns: 1fr 1fr 1fr 1fr;}
 #cartas_ordenador1{ grid-area: 2/1/3/2;}
 #cartas_ordenador2{ grid-area: 2/3/3/4;}
 #cartas_jugador{ grid-area: 3/2/4/3;}
 
 .carta{
     width: 13.5vw ; height: 20vw;
+}
+#zona_oro {
+    grid-area: 1;
+    width: 200px;
+    background-color:darkorange;
+    
+}
+#zona_copa {
+    grid-area: 1/2;
+    width: 200px;
+    background-color:darkred;
+    
+}
+#zona_espada {
+    grid-area: 1/3;
+    width: 200px;
+    background-color:darkblue;
+}
+#zona_basto {
+    grid-area: 1/4;
+    width: 200px;
+    background-color:darkgreen;
 }

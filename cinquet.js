@@ -20,7 +20,6 @@ class Mano_Cartas_Ordenador extends Mano_Cartas{
         posicionesDisponibles.forEach(e =>{
             if (this._cartas.includes(e)) coincidencia.push(e);
         });
-
         let cartaAJugar;
         coincidencia.length? cartaAJugar = coincidencia[numAleatorio(0, coincidencia.length-1)]: cartaAJugar= -1;
         return cartaAJugar;
@@ -48,14 +47,6 @@ class Partida{
         this._turno = this.buscar5oro(); console.log(`el 5 de oro lo tenia ${this._turno}`)
         //if (this._turno) this.cartaJugada(4);
         this.cartaJugada(4);
-        let jugadaActual;
-        while (!this.hayGanador()){
-            this._turno = (this._turno+1)%this._cantidad_jugadores;
-            console.log(`posibles jugadas: ${this._posiblesJugadas}  \n cartas a jugar: ${this._jugadores[this._turno].cartas}`);
-            jugadaActual = this._jugadores[this._turno].jugar(this._posiblesJugadas);
-            if (jugadaActual!=-1) this.cartaJugada(jugadaActual);
-            console.log(`turno: ${this._turno} Carta jugada: ${jugadaActual} \n cartas restantes: ${this._jugadores[this._turno].cartas}`);
-        }
     }
     repartirCartas(){
         let cartas_Repartidas = [];
@@ -87,6 +78,14 @@ class Partida{
     hayGanador(){
         return this._jugadores[this._turno].noQuedanCartas();
     }
+    movimientos(){
+        let jugadaActual;
+        this._turno = (this._turno+1)%this._cantidad_jugadores;
+        jugadaActual = this._jugadores[this._turno].jugar(this._posiblesJugadas);
+        if (jugadaActual!=-1) this.cartaJugada(jugadaActual);
+        return jugadaActual;
+    }
+    get turno(){return this._turno;}
     //cartasJugadas
 }
 

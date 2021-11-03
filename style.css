@@ -23,7 +23,7 @@ grid-template-columns: 1fr 1fr 1fr 1fr;}
 #cartas_ordenador2{ grid-area: 2/3/3/4;}
 #cartas_jugador{ grid-area: 3/2/4/3;}
 
-.carta{
+img{
     width: 13.5vw ; height: 20vw;
 }
 #zona_oro {
@@ -47,4 +47,28 @@ grid-template-columns: 1fr 1fr 1fr 1fr;}
     grid-area: 1/4;
     width: 200px;
     background-color:darkgreen;
+}
+
+@-webkit-keyframes slide {
+    0%   { transform: translate(0px,200px); }
+    100% { transform: translate(0px,0px); }
+  }
+  @-moz-keyframes slide {
+    0%   { transform: translate(0px,200px); }
+    100% { transform: translate(0px,0px); }
+  }
+  @-o-keyframes slide {
+    0%   { transform: translate(0px,200px); }
+    100% { transform: translate(0px,0px); }
+  }
+  @keyframes slide {
+    0%   { transform: translate(0px,200px); }
+    100% { transform: translate(0px,0px); }
+  }
+  
+img{
+    background-color: skyblue;
+    animation-name: slide;
+    animation-duration: 4s; 
+    animation-fill-mode: forwards; 
 }

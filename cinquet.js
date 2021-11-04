@@ -31,7 +31,7 @@ class Mano_Cartas_Persona extends Mano_Cartas{
     jugar(posicionesDisponibles){
         console.log("juega persona");
         console.log(posicionesDisponibles);
-        let carta = posicionesDisponibles.shift();
+        let carta = posicionesDisponibles.pop();
         return posicionesDisponibles.indexOf(carta);
     }
 }
@@ -76,6 +76,7 @@ class Partida{
         if (carta%10>0 && carta%10<5) this._posiblesJugadas.push(carta-1);
         if (carta%10<9 && carta%10>3) this._posiblesJugadas.push(carta+1);
         this._posiblesJugadas.sort((a,b)=>a-b);
+        console.log(this._posiblesJugadas);
     }
     devolverManoJugador(num_jugador){
         return this._jugadores[num_jugador];
@@ -87,11 +88,12 @@ class Partida{
         let jugadaActual;
         if (carta==-1){
              jugadaActual = this._jugadores[this._turno].jugar(this._posiblesJugadas);
-             this.pasarTurno()
+             this.pasarTurno();
         }
         else {
             console.log(this._posiblesJugadas);
-            jugadaActual = this._jugadores[this._turno].jugar(this._posiblesJugadas.unshift(carta));
+            this._posiblesJugadas.push(carta);
+            jugadaActual = this._jugadores[this._turno].jugar(this._posiblesJugadas);
             { if (jugadaActual!=-1) this.pasarTurno();}
         }
         if (jugadaActual!=-1) this.cartaJugada(jugadaActual);

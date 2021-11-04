@@ -40,7 +40,7 @@ const iniciar_juego= ()=>{
     mostrarCartasJugador();
     document.querySelectorAll(".carta").forEach(c =>c.addEventListener('click', juegaPersona));
     console.log(partida.turno);
-    if (partida.turno) mostrarCartaJugada(4);
+    if (!partida.turno) mostrarCartaJugada(4);
     let jugadaActual;
     while (partida.turno){
         jugadaActual = partida.movimientos(-1);
@@ -49,7 +49,10 @@ const iniciar_juego= ()=>{
 }
 
 const juegaPersona =  e =>{
-    if (partida.movimientos(e.target.id)!=-1) {
+    let jugadaActual;
+    let a = partida.movimientos(parseInt(e.target.id));
+    console.log(a);
+    if (a!=-1) {
         mover_Carta(e);
         while (partida.turno && !partida.hayGanador()){
             jugadaActual = partida.movimientos(-1);
@@ -62,7 +65,7 @@ const mover_Carta = e =>{
     console.log(e.target.id);
     document.querySelector("#cartas_jugador").removeChild(e.target);
     e.target.removeEventListener('click', juegaPersona);
-    colocarCartaJugada(e.target.id);
+    colocarCartaJugada(e.target);
 }
 
 document.addEventListener('keyup', iniciar_juego);

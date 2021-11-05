@@ -14,7 +14,7 @@ const mostrarCarta = carta=>{
 }
 
 const mostrarCartaJugada= (carta)=>{
-    console.log(carta);
+    //console.log(carta);
     let nueva_carta = document.createElement('img');
     nueva_carta.src = `/public/images/baraja_espanyola/${nombre_palo[Math.trunc(carta/10)]}_${valor_carta[carta%10]}.png`;
     nueva_carta.id = carta;
@@ -31,7 +31,7 @@ const colocarCartaJugada = e => {
 
 const mostrarCartasJugador= ()=>{
     let mano = partida.devolverManoJugador(0);
-    console.log(mano);
+    //console.log(mano);
     for (let i= 0; i<mano.cartas.length; i++) mostrarCarta(mano.cartas[i]);
 }
 
@@ -39,30 +39,29 @@ const iniciar_juego= ()=>{
     partida = new Partida(3,2);
     mostrarCartasJugador();
     document.querySelectorAll(".carta").forEach(c =>c.addEventListener('click', juegaPersona));
-    console.log(partida.turno);
-    if (!partida.turno) mostrarCartaJugada(4);
+    //console.log(partida.turno);
+    if (partida.turno) mostrarCartaJugada(4);
     let jugadaActual;
     while (partida.turno){
-        jugadaActual = partida.movimientos(-1);
+        jugadaActual = partida.movimientoCPU();
         if (jugadaActual!=-1) mostrarCartaJugada(jugadaActual);
     }
 }
 
 const juegaPersona =  e =>{
     let jugadaActual;
-    let a = partida.movimientos(parseInt(e.target.id));
-    console.log(a);
-    if (a!=-1) {
+   if (partida.movimientoJugador(parseInt(e.target.id))!=-1) {
         mover_Carta(e);
         while (partida.turno && !partida.hayGanador()){
-            jugadaActual = partida.movimientos(-1);
+            jugadaActual = partida.movimientoCPU();
             if (jugadaActual!=-1) mostrarCartaJugada(jugadaActual);
         }
     }
+    console.log(partida._jugadores);
 }
 
 const mover_Carta = e =>{
-    console.log(e.target.id);
+    //console.log(e.target.id);
     document.querySelector("#cartas_jugador").removeChild(e.target);
     e.target.removeEventListener('click', juegaPersona);
     colocarCartaJugada(e.target);

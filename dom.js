@@ -14,7 +14,6 @@ const mostrarCarta = carta=>{
 }
 
 const mostrarCartaJugada= (carta)=>{
-    //console.log(carta);
     let nueva_carta = document.createElement('img');
     nueva_carta.src = `/public/images/baraja_espanyola/${nombre_palo[Math.trunc(carta/10)]}_${valor_carta[carta%10]}.png`;
     nueva_carta.id = carta;
@@ -31,7 +30,6 @@ const colocarCartaJugada = e => {
 
 const mostrarCartasJugador= ()=>{
     let mano = partida.devolverManoJugador(0);
-    //console.log(mano);
     for (let i= 0; i<mano.cartas.length; i++) mostrarCarta(mano.cartas[i]);
 }
 
@@ -39,7 +37,6 @@ const iniciar_juego= ()=>{
     partida = new Partida(3,2);
     mostrarCartasJugador();
     document.querySelectorAll(".carta").forEach(c =>c.addEventListener('click', juegaPersona));
-    //console.log(partida.turno);
     if (partida.turno) mostrarCartaJugada(4);
     jueganCPUs();
 }
@@ -49,7 +46,6 @@ const juegaPersona =  e =>{
         mover_Carta(e);
         jueganCPUs();
     }
-    console.log(partida._jugadores);
 }
 
 const jueganCPUs = () =>{
@@ -66,13 +62,11 @@ const mover_Carta = e =>{
     colocarCartaJugada(e.target);
 }
 
-
 const saltarTurno = () =>{
-    alert("salto de turno");
     partida.pasarTurno();
     jueganCPUs();
 }
 
 document.addEventListener('keyup', iniciar_juego);
 
-document.querySelector('button').addEventListener('click', saltarTurno)
+document.querySelector("#saltarTurno").addEventListener('click', saltarTurno);

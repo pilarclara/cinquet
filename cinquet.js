@@ -1,4 +1,4 @@
-function numAleatorio(min, max){
+const numAleatorio = (min, max) =>{
     return Math.trunc(Math.random() * (max - min + 1));
 }
 
@@ -8,7 +8,9 @@ class Mano_Cartas{
     }
     get cartas(){ return this._cartas}
     numero_cartas(){ return this._cartas.length}
-    eliminar_carta(carta){ this._cartas.splice(this._cartas.indexOf(carta),1); console.log(this.cartas)}
+    eliminar_carta(carta){ 
+        this._cartas.splice(this._cartas.indexOf(carta) ,1);
+    }
 }
 
 class Mano_Cartas_Ordenador extends Mano_Cartas{
@@ -16,7 +18,7 @@ class Mano_Cartas_Ordenador extends Mano_Cartas{
         super(cartasElegidas);
     }
     jugar(posicionesDisponibles){
-        console.log(posicionesDisponibles);
+        console.log('Posiciiones disponibles ',posicionesDisponibles);
         let coincidencia=[];
         posicionesDisponibles.forEach(e =>{
             if (this._cartas.includes(e)) coincidencia.push(e);
@@ -46,6 +48,7 @@ class Partida{
         }
         this._posiblesJugadas = [4];
         this._turno = 0;
+        console.log("Reparto inicial de cartas", this._jugadores);
     }
     pasarTurno(){
         this._turno = (this.turno +1)% this._cantidad_jugadores;
@@ -85,8 +88,8 @@ class Partida{
     movimientoCPU(){
         let jugadaActual;
         jugadaActual = this._jugadores[this._turno].jugar(this._posiblesJugadas);
-        this.pasarTurno();
         if (jugadaActual!=-1) this.cartaJugada(jugadaActual);
+        this.pasarTurno();
         return jugadaActual;
     }
 
@@ -95,9 +98,8 @@ class Partida{
         this._posiblesJugadas.push(carta);
         jugadaActual = this._jugadores[this._turno].jugar(this._posiblesJugadas);
         if (jugadaActual!=-1) {
-            this.pasarTurno();
             this.cartaJugada(jugadaActual);
-
+            this.pasarTurno();
         }
         return jugadaActual;
     }

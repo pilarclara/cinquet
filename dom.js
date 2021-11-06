@@ -50,7 +50,6 @@ const juegaPersona =  e =>{
 
 const jueganCPUs = () =>{
     let jugadaActual;
-    console.log(`Turno: ${partida._turno}, Posibles jugadas ${partida._posiblesJugadas}`)
     while (partida.turno && !partida.hayGanador()){
         jugadaActual = partida.movimientoCPU();
         if (jugadaActual!=-1) mostrarCartaJugada(jugadaActual);

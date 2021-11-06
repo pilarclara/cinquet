@@ -8,7 +8,7 @@ class Mano_Cartas{
     }
     get cartas(){ return this._cartas}
     numero_cartas(){ return this._cartas.length}
-    eliminar_carta(carta){ this._cartas.splice(this._cartas.indexOf(carta),1); }
+    eliminar_carta(carta){ this._cartas.splice(this._cartas.indexOf(carta),1); console.log(this.cartas)}
 }
 
 class Mano_Cartas_Ordenador extends Mano_Cartas{
@@ -16,6 +16,7 @@ class Mano_Cartas_Ordenador extends Mano_Cartas{
         super(cartasElegidas);
     }
     jugar(posicionesDisponibles){
+        console.log(posicionesDisponibles);
         let coincidencia=[];
         posicionesDisponibles.forEach(e =>{
             if (this._cartas.includes(e)) coincidencia.push(e);
@@ -43,10 +44,8 @@ class Partida{
         for (let i=1; i<cant_jugadores; i++){
             this._jugadores.push(new Mano_Cartas_Ordenador(cartas_Repartidas[i]));
         }
-        this._posiblesJugadas = [];
-        for (let i=0; i<4;i++) this._posiblesJugadas.push(i*10+4);
-        this.buscar5oro();
-        if (this.turno) this.cartaJugada(4);  
+        this._posiblesJugadas = [4];
+        this._turno = 0;
     }
     pasarTurno(){
         this._turno = (this.turno +1)% this._cantidad_jugadores;
@@ -63,14 +62,12 @@ class Partida{
         cartas_Repartidas.forEach(e=>e.sort((a,b)=>a-b));
         return cartas_Repartidas;
     }    
-    buscar5oro(){
-        let inicial = 0;
-        this._jugadores.forEach((element, index) => {if (element.cartas.includes(4)) inicial = index});
-        this._turno = inicial;
-    }
     cartaJugada(carta){
         this._jugadores[this._turno].eliminar_carta(carta);
         this._posiblesJugadas.splice(this._posiblesJugadas.indexOf(carta),1);
+        if (carta == 4){
+            for (let i=1; i<4;i++) this._posiblesJugadas.push(i*10+4);
+        }
         if (carta%10 == 4){
             this._posiblesJugadas.push(carta-1);
             this._posiblesJugadas.push(carta+1);
@@ -78,7 +75,6 @@ class Partida{
         if (carta%10>0 && carta%10<4) this._posiblesJugadas.push(carta-1);
         if (carta%10<9 && carta%10>4) this._posiblesJugadas.push(carta+1);
         this._posiblesJugadas.sort((a,b)=>a-b);
-        console.log(this._posiblesJugadas);
     }
     devolverManoJugador(num_jugador){
         return this._jugadores[num_jugador];
@@ -88,10 +84,8 @@ class Partida{
     }
     movimientoCPU(){
         let jugadaActual;
-        
         jugadaActual = this._jugadores[this._turno].jugar(this._posiblesJugadas);
         this.pasarTurno();
-
         if (jugadaActual!=-1) this.cartaJugada(jugadaActual);
         return jugadaActual;
     }

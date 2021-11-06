@@ -5,19 +5,20 @@ const valor_carta = ['1','2','3','4','5','6','7','10_sota', '11_caballo','12_rey
 
 let partida;
 
-const mostrarCarta = carta=>{
+const crearImagenCarta = carta =>{
     let nueva_carta = document.createElement('img');
     nueva_carta.src = `/public/images/baraja_espanyola/${nombre_palo[Math.trunc(carta/10)]}_${valor_carta[carta%10]}.png`;
     nueva_carta.id = carta;
+    return nueva_carta;
+}
+const mostrarCarta = carta=>{
+    let nueva_carta = crearImagenCarta(carta);
     nueva_carta.classList.toggle("carta");
     document.querySelector('#cartas_jugador') .appendChild(nueva_carta)
 }
 
 const mostrarCartaJugada= (carta)=>{
-    let nueva_carta = document.createElement('img');
-    nueva_carta.src = `/public/images/baraja_espanyola/${nombre_palo[Math.trunc(carta/10)]}_${valor_carta[carta%10]}.png`;
-    nueva_carta.id = carta;
-    colocarCartaJugada(nueva_carta);
+    colocarCartaJugada(crearImagenCarta(carta)); //valorar si eliminar mostrarCartaJugada
 }
 
 const colocarCartaJugada = e => {
@@ -37,7 +38,6 @@ const iniciar_juego= ()=>{
     partida = new Partida(3,2);
     mostrarCartasJugador();
     document.querySelectorAll(".carta").forEach(c =>c.addEventListener('click', juegaPersona));
-    if (partida.turno) mostrarCartaJugada(4);
     jueganCPUs();
 }
 
@@ -50,6 +50,7 @@ const juegaPersona =  e =>{
 
 const jueganCPUs = () =>{
     let jugadaActual;
+    console.log(`Turno: ${partida._turno}, Posibles jugadas ${partida._posiblesJugadas}`)
     while (partida.turno && !partida.hayGanador()){
         jugadaActual = partida.movimientoCPU();
         if (jugadaActual!=-1) mostrarCartaJugada(jugadaActual);

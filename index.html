@@ -4,20 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Juego Cinquet</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id = "principal">
-        <div id= "cartas_jugadas">
+    <div id="principal">
+        <h1>CINQUET</h1>
+        <button id="ayuda">?</button>
+        <div id="cartas_jugadas">
             <div id="zona_oro"></div>
             <div id="zona_copa"></div>
             <div id="zona_espada"></div>
             <div id="zona_basto"></div>
         </div>
-        <div id= "cartas_ordenador1" class= "zona_ordenador"></div>
-        <div id= "cartas_ordenador2" class= "zona_ordenador"></div>
-        <div id= "cartas_jugador"></div>
+        <div id="cartas_ordenador1" class="zona_ordenador">
+            <p>CPU 1</p>
+            <div>
+            <img src="public/images/baraja_espanyola/carta_reverso.png" alt="carta_reverso" class="carta-reverso">
+            <img src="public/images/baraja_espanyola/carta_reverso.png" alt="carta_reverso" class="carta-reverso2">
+            </div>
+        </div>
+        <div id="cartas_ordenador2" class="zona_ordenador">
+            <p>CPU 2</p>
+            <div>
+            <img src="public/images/baraja_espanyola/carta_reverso.png" alt="carta_reverso" class="carta-reverso">
+            <img src="public/images/baraja_espanyola/carta_reverso.png" alt="carta_reverso" class="carta-reverso2">
+            </div>
+        </div>
+        <p id="txt_cartas_jugador">Tus cartas</p>
+        <div id="cartas_jugador"></div>
     </div>
     <button>No poner carta</button>
     <script type="module" src="dom.js"></script>

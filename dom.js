@@ -50,10 +50,18 @@ const juegaPersona =  e =>{
 
 const jueganCPUs = () =>{
     let jugadaActual;
-    while (partida.turno && !partida.hayGanador()){
+    while (partida.turno && partida.ganador==-1){
         jugadaActual = partida.movimientoCPU();
         if (jugadaActual!=-1) mostrarCartaJugada(jugadaActual);
     }
+    if (partida._ganador!=-1) partidaFinalizada();
+}
+
+const partidaFinalizada = () =>{
+    partida.ganador? alert(`Ganó , ${partida.ganador}`) : alert("Has ganado"); // eliminar todos los addeventlistener
+    document.querySelectorAll(".carta").forEach(c =>c.removeEventListener('click', juegaPersona));
+    document.removeEventListener('keyup', iniciar_juego);
+    document.querySelector("#saltarTurno").removeEventListener('click', saltarTurno);
 }
 
 const mover_Carta = e =>{

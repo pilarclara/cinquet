@@ -10,6 +10,7 @@ class Mano_Cartas{
     numero_cartas(){ return this._cartas.length}
     eliminar_carta(carta){ 
         this._cartas.splice(this._cartas.indexOf(carta) ,1);
+        return (this._cartas.length);
     }
 }
 
@@ -49,6 +50,7 @@ class Partida{
         this._posiblesJugadas = [4];
         this._turno = 0;
         console.log("Reparto inicial de cartas", this._jugadores);
+        this._ganador = -1;
     }
     pasarTurno(){
         this._turno = (this.turno +1)% this._cantidad_jugadores;
@@ -66,7 +68,8 @@ class Partida{
         return cartas_Repartidas;
     }    
     cartaJugada(carta){
-        this._jugadores[this._turno].eliminar_carta(carta);
+        let cantCartas = this._jugadores[this._turno].eliminar_carta(carta);
+        if (!cantCartas) return true;
         this._posiblesJugadas.splice(this._posiblesJugadas.indexOf(carta),1);
         if (carta == 4){
             for (let i=1; i<4;i++) this._posiblesJugadas.push(i*10+4);
@@ -78,6 +81,7 @@ class Partida{
         if (carta%10>0 && carta%10<4) this._posiblesJugadas.push(carta-1);
         if (carta%10<9 && carta%10>4) this._posiblesJugadas.push(carta+1);
         this._posiblesJugadas.sort((a,b)=>a-b);
+        return false
     }
     devolverManoJugador(num_jugador){
         return this._jugadores[num_jugador];
@@ -88,7 +92,8 @@ class Partida{
     movimientoCPU(){
         let jugadaActual;
         jugadaActual = this._jugadores[this._turno].jugar(this._posiblesJugadas);
-        if (jugadaActual!=-1) this.cartaJugada(jugadaActual);
+        if (jugadaActual!=-1) 
+            if (this.cartaJugada(jugadaActual)) this._ganador = this._turno;
         this.pasarTurno();
         return jugadaActual;
     }
@@ -98,12 +103,13 @@ class Partida{
         this._posiblesJugadas.push(carta);
         jugadaActual = this._jugadores[this._turno].jugar(this._posiblesJugadas);
         if (jugadaActual!=-1) {
-            this.cartaJugada(jugadaActual);
+            if (this.cartaJugada(jugadaActual)) this._ganador = this._turno;
             this.pasarTurno();
         }
         return jugadaActual;
     }
-    get turno(){return this._turno;}
+    get turno(){ return this._turno;}
+    get ganador(){ return this._ganador;}
 }
 
 export {Partida, Mano_Cartas}

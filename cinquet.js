@@ -49,7 +49,6 @@ class Partida{
         }
         this._posiblesJugadas = [];
         for (let i=0; i<4;i++) this._posiblesJugadas.push(i*10+4);
-        alert(this._posiblesJugadas);
         this.buscar5oro();
         if (this.turno) this.cartaJugada(4);  
         console.log(`cartas repartidas inicialmente`);

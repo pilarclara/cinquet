@@ -41,30 +41,38 @@ const iniciar_juego= ()=>{
     document.querySelectorAll(".carta").forEach(c =>c.addEventListener('click', juegaPersona));
     //console.log(partida.turno);
     if (partida.turno) mostrarCartaJugada(4);
+    jueganCPUs();
+}
+
+const juegaPersona =  e =>{
+   if (partida.movimientoJugador(parseInt(e.target.id))!=-1) {
+        mover_Carta(e);
+        jueganCPUs();
+    }
+    console.log(partida._jugadores);
+}
+
+const jueganCPUs = () =>{
     let jugadaActual;
-    while (partida.turno){
+    while (partida.turno && !partida.hayGanador()){
         jugadaActual = partida.movimientoCPU();
         if (jugadaActual!=-1) mostrarCartaJugada(jugadaActual);
     }
 }
 
-const juegaPersona =  e =>{
-    let jugadaActual;
-   if (partida.movimientoJugador(parseInt(e.target.id))!=-1) {
-        mover_Carta(e);
-        while (partida.turno && !partida.hayGanador()){
-            jugadaActual = partida.movimientoCPU();
-            if (jugadaActual!=-1) mostrarCartaJugada(jugadaActual);
-        }
-    }
-    console.log(partida._jugadores);
-}
-
 const mover_Carta = e =>{
-    //console.log(e.target.id);
     document.querySelector("#cartas_jugador").removeChild(e.target);
     e.target.removeEventListener('click', juegaPersona);
     colocarCartaJugada(e.target);
 }
 
+
+const saltarTurno = () =>{
+    alert("salto de turno");
+    partida.pasarTurno();
+    jueganCPUs();
+}
+
 document.addEventListener('keyup', iniciar_juego);
+
+document.querySelector('button').addEventListener('click', saltarTurno)

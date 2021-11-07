@@ -22,6 +22,7 @@ const mostrarCartaJugada= (carta)=>{
 }
 
 const colocarCartaJugada = e => {
+    e.classList.toggle(`carta_${e.id%10}`);
     if (e.id <=9) document.querySelector("#zona_oro").appendChild(e);
     if (e.id >=10 && e.id <=19) document.querySelector("#zona_copa").appendChild(e);
     if (e.id >=20 && e.id <=29) document.querySelector("#zona_espada").appendChild(e);

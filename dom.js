@@ -28,7 +28,6 @@ const colocarCartaJugada = e => {
     if (e.id >=30 && e.id <=39) document.querySelector("#zona_basto").appendChild(e);
 }
 
-
 const mostrarCartasJugador= ()=>{
     let mano = partida.devolverManoJugador(0);
     for (let i= 0; i<mano.cartas.length; i++) mostrarCarta(mano.cartas[i]);
@@ -54,13 +53,13 @@ const jueganCPUs = () =>{
         jugadaActual = partida.movimientoCPU();
         if (jugadaActual!=-1) mostrarCartaJugada(jugadaActual);
     }
-    if (partida._ganador!=-1) partidaFinalizada();
+    if (partida.ganador!=-1) partidaFinalizada();
 }
 
 const partidaFinalizada = () =>{
     partida.ganador? alert(`Ganó , ${partida.ganador}`) : alert("Has ganado"); // eliminar todos los addeventlistener
     document.querySelectorAll(".carta").forEach(c =>c.removeEventListener('click', juegaPersona));
-    document.removeEventListener('keyup', iniciar_juego);
+    document.querySelector("#btn_jugar").removeEventListener('click', iniciar_juego);
     document.querySelector("#saltarTurno").removeEventListener('click', saltarTurno);
 }
 
@@ -75,7 +74,6 @@ const saltarTurno = () =>{
     jueganCPUs();
 }
 
-//document.addEventListener('keyup', iniciar_juego);
 document.querySelector("#btn_jugar").addEventListener('click', iniciar_juego);
 
 document.querySelector("#saltarTurno").addEventListener('click', saltarTurno);

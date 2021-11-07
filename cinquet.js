@@ -19,11 +19,8 @@ class Mano_Cartas_Ordenador extends Mano_Cartas{
         super(cartasElegidas);
     }
     jugar(posicionesDisponibles){
-        console.log('Posiciiones disponibles ',posicionesDisponibles);
         let coincidencia=[];
-        posicionesDisponibles.forEach(e =>{
-            if (this._cartas.includes(e)) coincidencia.push(e);
-        });
+        posicionesDisponibles.forEach(e =>{ if (this._cartas.includes(e)) coincidencia.push(e); });
         let cartaAJugar;
         coincidencia.length? cartaAJugar = coincidencia[numAleatorio(0, coincidencia.length-1)]: cartaAJugar= -1;
         return cartaAJugar;
@@ -44,12 +41,9 @@ class Partida{
         let cartas_Repartidas = this.repartirCartas();
         this._jugadores=[];
         this._jugadores.push(new Mano_Cartas_Persona(cartas_Repartidas[0]));
-        for (let i=1; i<cant_jugadores; i++){
-            this._jugadores.push(new Mano_Cartas_Ordenador(cartas_Repartidas[i]));
-        }
+        for (let i=1; i<cant_jugadores; i++) this._jugadores.push(new Mano_Cartas_Ordenador(cartas_Repartidas[i]));
         this._posiblesJugadas = [4];
         this._turno = 0;
-        console.log("Reparto inicial de cartas", this._jugadores);
         this._ganador = -1;
     }
     pasarTurno(){
@@ -85,10 +79,10 @@ class Partida{
     }
     devolverManoJugador(num_jugador){
         return this._jugadores[num_jugador];
-    }
-    hayGanador(){
-        return !this._jugadores[this._turno].numero_cartas();
-    }
+    } 
+    // hayGanador(){
+    //     return !this._jugadores[this._turno].numero_cartas();
+    // }
     movimientoCPU(){
         let jugadaActual;
         jugadaActual = this._jugadores[this._turno].jugar(this._posiblesJugadas);

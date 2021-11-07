@@ -75,6 +75,7 @@ const saltarTurno = () =>{
     jueganCPUs();
 }
 
-document.addEventListener('keyup', iniciar_juego);
+//document.addEventListener('keyup', iniciar_juego);
+document.querySelector("#btn_jugar").addEventListener('click', iniciar_juego);
 
 document.querySelector("#saltarTurno").addEventListener('click', saltarTurno);

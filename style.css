@@ -15,20 +15,31 @@ body {
 }
 
 #cartas_jugador{
-    min-height: 10vw;
+    min-height: 5rem;
     background-color: red;
 }
 
 #principal{
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-columns: 1fr 6fr 1fr;
     grid-template-rows: 0.08fr 3fr 1fr;
     gap: 1rem;
     /*margin: 0rem 8rem;*/
-    width: 85vw;
+    width: 90vw;
     
 }
+
+#btn_jugar {
+    grid-area: 1/1;
+    justify-self: center;
+    align-self: center;
+    font-family: 'Faustina', serif;
+    font-size: 1.7em;
+    padding-bottom: 0.5rem;
+    padding-left: 0.5rem;
+}
+
 
 #principal h1 {
     grid-area: 1/2;
@@ -60,7 +71,7 @@ body {
     background-color: blanchedalmond;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    
+    padding: 0 5rem;
 }
 
 #cartas_ordenador1{ 
@@ -86,16 +97,14 @@ body {
 
 #cartas_jugador{ 
     grid-area: 3/2/4/3;
+    text-align: center;
     
 }
 #cartas_jugador img {
     cursor: pointer;
+    width: 5.5rem;
 }
 
-img{
-    width: 7vw ; 
-    /*height: 13.3vw;*/
-}
 
 .carta-reverso {
     width: 10vw;
@@ -126,7 +135,6 @@ img{
 
 #zona_basto {
     grid-area: 1/4;
-    
     background-color:darkgreen;
 }
 
@@ -135,7 +143,8 @@ img{
 }
 
 #zona_oro img, #zona_copa img, #zona_espada img, #zona_basto img{
-    padding: 0.25rem;
+    padding:0 1rem;
+    width: 8rem;
 }
 
 @-webkit-keyframes slide {
@@ -160,4 +169,13 @@ img{
     animation-name: slide;
     animation-duration: 4s; 
     animation-fill-mode: forwards; 
+}
+#saltarTurno {
+    grid-area: 3/1;
+    justify-self: right;
+    align-self: center;
+    font-family: 'Faustina', serif;
+    font-size: 1.2em;
+    padding-bottom: 0.5rem;
+    padding-left: 0.5rem;
 }

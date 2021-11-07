@@ -1,0 +1,176 @@
+#contenedor_principal {
+    display: grid;
+    grid-template-columns: repeat(4 1fr);
+    grid-template-rows: repeat(12 1fr);
+}
+
+#co0 {
+    grid-column: 1/2;
+    grid-row: 1/3;
+}
+#co1 {
+    grid-column: 1/2;
+    grid-row: 2/5;
+}
+#co2 {
+    grid-row: 3/6;
+    grid-column: 1/2;
+}
+#co3 {
+    grid-column: 1/2;
+    grid-row:4/7;
+}
+#co4 {
+    grid-column: 1/2;
+    grid-row:5/8;
+}
+#co5 {
+    grid-column: 1/2;
+    grid-row:6/9;
+}
+#co6 {
+    grid-column: 1/2;
+    grid-row: 7/10;
+}
+#co7 {
+    grid-column: 1/2;
+    grid-row: 8/11;
+}
+#co8{
+    grid-column: 1/2;
+    grid-row:9/12;
+}
+#co9 {
+    grid-column: 1/2;
+    grid-row:10/12;
+}
+
+/*espadas*/
+
+#ce0 {
+    grid-column: 2/3;
+    grid-row: 1/3;
+}
+#ce1 {
+    grid-column: 2/3;
+    grid-row: 2/5;
+}
+#ce2 {
+    grid-column: 2/3;
+    grid-row: 3/6;
+}
+#ce3 {
+    grid-column: 2/3;
+    grid-row:4/7;
+}
+#ce4 {
+    grid-column: 2/3;
+    grid-row:5/8;
+}
+#ce5 {
+    grid-column: 2/3;
+    grid-row:6/9;
+}
+#ce6 {
+    grid-column: 2/3;
+    grid-row: 7/10;
+}
+#ce7 {
+    grid-column: 2/3;
+    grid-row: 8/11;
+}
+#ce8{
+    grid-column: 2/3;
+    grid-row:9/12;
+}
+#ce9 {
+    grid-column: 2/3;
+    grid-row:10/12;
+}
+
+/*copas*/
+#cc0 {
+    grid-column: 3/4;
+    grid-row: 1/3;
+}
+#cc1 {
+    grid-column: 3/4;
+    grid-row: 2/5;
+}
+#cc2 {
+    grid-column: 3/4;
+    grid-row: 3/6;
+}
+#cc3 {
+    grid-column: 3/4;
+    grid-row:4/7;
+}
+#cc4 {
+    grid-column: 3/4;
+    grid-row:5/8;
+}
+#cc5 {
+    grid-column: 3/4;
+    grid-row:6/9;
+}
+#cc6 {
+    grid-column: 3/4;
+    grid-row: 7/10;
+}
+#cc7 {
+    grid-column: 3/4;
+    grid-row: 8/11;
+}
+#cc8{
+    grid-column: 3/4;
+    grid-row:9/12;
+}
+#cc9 {
+    grid-column: 3/4;
+    grid-row:10/12;
+}
+
+
+
+/*bastos*/
+
+#cb0 {
+    grid-column: 4/5;
+    grid-row: 1/3;
+}
+#cb1 {
+    grid-column: 4/5;
+    grid-row: 2/5;
+}
+#cb2 {
+    grid-column: 4/5;
+    grid-row: 3/6;
+}
+#cb3 {
+    grid-column: 4/5;
+    grid-row:4/7;
+}
+#cb4 {
+    grid-column: 4/5;
+    grid-row:5/8;
+}
+#cb5 {
+    grid-column: 4/5;
+    grid-row:6/9;
+}
+#cb6 {
+    grid-column: 4/5;
+    grid-row: 7/10;
+}
+#cb7 {
+    grid-column: 4/5;
+    grid-row: 8/11;
+}
+#cb8{
+    grid-column: 4/5;
+    grid-row:9/12;
+}
+#cb9 {
+    grid-column: 4/5;
+    grid-row:10/12;
+}

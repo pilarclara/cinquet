@@ -97,6 +97,9 @@ body { user-select: none;}
 }
 #cartas_ordenador2{ 
     grid-area: 2/3/3/4;
+
+}
+#zona_carta_reverso1, #zona_carta_reverso2 {
     display: grid; 
     grid-template-columns: 1fr;
     grid-template-rows: repeat(14 1fr);

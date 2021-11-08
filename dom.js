@@ -5,6 +5,14 @@ const valor_carta = ['1','2','3','4','5','6','7','10_sota', '11_caballo','12_rey
 
 let partida;
 
+function wait(ms){
+    var start = new Date().getTime();
+    var end = start;
+    while(end < start + ms) {
+      end = new Date().getTime();
+    }  
+}
+
 const crearImagenCarta = carta =>{
     let nueva_carta = document.createElement('img');
     nueva_carta.src = `/public/images/baraja_espanyola/${nombre_palo[Math.trunc(carta/10)]}_${valor_carta[carta%10]}.png`;
@@ -38,13 +46,14 @@ const iniciar_juego= ()=>{
     partida = new Partida(3,2);
     mostrarCartasJugador();
     document.querySelectorAll(".carta").forEach(c =>c.addEventListener('click', juegaPersona));
-    jueganCPUs();
 }
 
 const juegaPersona =  e =>{
    if (partida.movimientoJugador(parseInt(e.target.id))!=-1) {
         mover_Carta(e);
-        jueganCPUs();
+        wait(1000);
+        jueganCPUs()
+        // setTimeout(jueganCPUs(), 3000); probé con esto pero no logré que se viera la jugada del otro
     }
 }
 
@@ -52,6 +61,9 @@ const jueganCPUs = () =>{
     let jugadaActual;
     while (partida.turno && partida.ganador==-1){
         jugadaActual = partida.movimientoCPU();
+        wait(1000);
+    //    setTimeout(function(){}, 5000)
+        console.log("ha esperado");
         if (jugadaActual!=-1) mostrarCartaJugada(jugadaActual);
     }
     if (partida.ganador!=-1) partidaFinalizada();
@@ -72,7 +84,7 @@ const mover_Carta = e =>{
 
 const saltarTurno = () =>{
     partida.pasarTurno();
-    jueganCPUs();
+    setTimeout(jueganCPUs(), 10000);
 }
 
 document.querySelector("#btn_jugar").addEventListener('click', iniciar_juego);

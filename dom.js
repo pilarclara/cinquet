@@ -3,6 +3,7 @@ import {Partida, Mano_Cartas} from "./cinquet.js";
 const nombre_palo = ['oro', 'copa', 'espada', 'basto'];
 const valor_carta = ['1','2','3','4','5','6','7','10_sota', '11_caballo','12_rey'];
 
+const cantidadJugadores = 3;
 let partida;
 
 function wait(ms){
@@ -40,9 +41,28 @@ const mostrarCartasJugador= ()=>{
     for (let i= 0; i<mano.cartas.length; i++) mostrarCarta(mano.cartas[i]);
 }
 
+const mostrarReverso = zona =>{
+    let nueva_carta = document.createElement('img');
+    nueva_carta.src = `/public/images/baraja_espanyola/carta_reverso.png`;
+    nueva_carta.classList.toggle("derecha");
+    let cad = `zona_carta_reverso`;
+    cad.concat(zona.toString());
+    console.log(cad);
+    document.getElementById(cad).appendChild(nueva_carta)
+}
+
+const mostrarCartasCPUs = () =>{
+    let mano;
+    for (let j = 0; j<cantidadJugadores-1; j++){
+        mano = partida.jugadores[j];
+        for (let i= 0; i<mano.cartas.length; i++) mostrarReverso(j);    
+    }
+}
+
 const iniciar_juego= ()=>{
-    partida = new Partida(3,2);
+    partida = new Partida(cantidadJugadores,2);
     mostrarCartasJugador();
+    mostrarCartasCPUs();
     document.querySelectorAll(".carta").forEach(c =>c.addEventListener('click', juegaPersona));
 }
 

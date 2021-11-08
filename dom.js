@@ -51,7 +51,7 @@ const iniciar_juego= ()=>{
 const juegaPersona =  e =>{
    if (partida.movimientoJugador(parseInt(e.target.id))!=-1) {
         mover_Carta(e);
-        wait(1000);
+      //  wait(1000);
         jueganCPUs()
         // setTimeout(jueganCPUs(), 3000); probé con esto pero no logré que se viera la jugada del otro
     }
@@ -61,7 +61,7 @@ const jueganCPUs = () =>{
     let jugadaActual;
     while (partida.turno && partida.ganador==-1){
         jugadaActual = partida.movimientoCPU();
-        wait(1000);
+        wait(500);
     //    setTimeout(function(){}, 5000)
         console.log("ha esperado");
         if (jugadaActual!=-1) mostrarCartaJugada(jugadaActual);
@@ -84,7 +84,8 @@ const mover_Carta = e =>{
 
 const saltarTurno = () =>{
     partida.pasarTurno();
-    setTimeout(jueganCPUs(), 10000);
+    jueganCPUs()
+    //setTimeout(jueganCPUs(), 10000);
 }
 
 document.querySelector("#btn_jugar").addEventListener('click', iniciar_juego);

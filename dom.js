@@ -20,9 +20,11 @@ const crearImagenCarta = carta =>{
     nueva_carta.id = carta;
     return nueva_carta;
 }
-const mostrarCarta = carta=>{
+const mostrarCarta = (carta,i)=>{
     let nueva_carta = crearImagenCarta(carta);
     nueva_carta.classList.toggle("carta");
+    nueva_carta.classList.toggle(`col${i}`)
+    nueva_carta.classList.toggle("carta_0")
     document.querySelector('#cartas_jugador') .appendChild(nueva_carta)
 }
 
@@ -38,7 +40,7 @@ const colocarCartaJugada = e => {
 
 const mostrarCartasJugador= ()=>{
     let mano = partida.devolverManoJugador(0);
-    for (let i= 0; i<mano.cartas.length; i++) mostrarCarta(mano.cartas[i]);
+    for (let i= 0; i<mano.cartas.length; i++) mostrarCarta(mano.cartas[i],i);
 }
 
 const mostrarReverso = (zona, num )=>{

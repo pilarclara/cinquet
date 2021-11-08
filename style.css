@@ -125,19 +125,6 @@ body { user-select: none;}
 }
 
 
-.carta-reverso {
-    width: 11rem;
-    position: absolute;
-    z-index: 0; 
-    justify-self: center;
-}
-.carta-reverso2 {
-    padding-top: 1.5rem;
-    width: 11rem;
-    z-index: 1;
-    justify-self: center;
-}
-
 #cartas_jugadas img{
     padding:0 1rem;
     width: 8rem;
@@ -169,6 +156,19 @@ body { user-select: none;}
 
 /* Animaciones */
 
+.animacion-slide-left{
+    animation-name: slide_left;
+}
+.animacion-slide-right{
+    animation-name: slide_right;
+}
+.animacion-slide-up{
+    animation-name: slide_up;
+}
+.animacion-slide-down{
+    animation-name:slide_down;
+}
+
 @-webkit-keyframes slide_up {
     0%   { transform: translate(0px,200px); }
     100% { transform: translate(0px,0px); }
@@ -186,6 +186,22 @@ body { user-select: none;}
     100% { transform: translate(0px,0px); }
   }
 
+  @-webkit-keyframes slide_left {
+    0%   { transform: translate(0px,200px); }
+    100% { transform: translate(0px,0px); }
+  }
+  @-moz-keyframes slide_left {
+    0%   { transform: translate(0px,200px); }
+    100% { transform: translate(0px,0px); }
+  }
+  @-o-keyframes slide_left {
+    0%   { transform: translate(0px,200px); }
+    100% { transform: translate(0px,0px); }
+  }
+  @keyframes slide_left{
+    0%   { transform: translate(0px,200px); }
+    100% { transform: translate(0px,0px); }
+  }
 
   img{
     /*background-color: skyblue;*/
@@ -194,10 +210,7 @@ body { user-select: none;}
     animation-fill-mode: forwards; 
 }
 
-.animacion-slide-left{
-    animation-name: slide-left;
-    animation-duration: 4s;
-}
+
 
 /*---------------------*/
 

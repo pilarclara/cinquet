@@ -23,21 +23,24 @@ const crearImagenCarta = carta =>{
 const mostrarCarta = (carta,i)=>{
     let nueva_carta = crearImagenCarta(carta);
     nueva_carta.classList.toggle("carta");
-    nueva_carta.classList.toggle(`col${i}`)
-    nueva_carta.classList.toggle("carta_0")
-    document.querySelector('#cartas_jugador') .appendChild(nueva_carta)
+    nueva_carta.classList.toggle(`col${i}`);
+    nueva_carta.classList.toggle("carta_0");
+    document.querySelector('#cartas_jugador') .appendChild(nueva_carta);
+    nueva_carta.classList.toggle('.animacion-slide-up');
 }
 
 const mostrarCartaJugada= (carta, i)=>{
     let list = document.getElementById(`zona_carta_reverso${i}`);
     list.removeChild(list.childNodes[0]);
-    colocarCartaJugada(crearImagenCarta(carta)); 
+    colocarCartaJugada(crearImagenCarta(carta),i); 
 }
 
-const colocarCartaJugada = e => {
+const colocarCartaJugada = (e,i) => {
+    (i == 2)? e.classList('animacion-slide-left'): e.classList('animacion-slide-right');
     e.classList.toggle(`carta_${e.id%10}`);
     e.classList.toggle(`carta_${nombre_palo[parseInt(e.id/10)]}`);
     document.querySelector("#cartas_jugadas").appendChild(e);
+    (i == 2)? e.classList('animacion-slide-left'): e.classList('animacion-slide-right');
 }
 
 const mostrarCartasJugador= ()=>{

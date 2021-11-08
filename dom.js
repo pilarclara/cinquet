@@ -45,7 +45,7 @@ const mostrarReverso = (zona, num )=>{
     let nueva_carta = document.createElement('img');
     nueva_carta.src = `/public/images/baraja_espanyola/carta_reverso.png`;
     nueva_carta.classList.toggle(`carta_${num}`);
-    nueva_carta.classList.toggle(`col1`);
+    nueva_carta.classList.toggle(`col0`);
     console.log(zona);
     document.getElementById(zona).appendChild(nueva_carta)
 }
@@ -59,7 +59,8 @@ const mostrarCartasCPUs = () =>{
 }
 
 const iniciar_juego= ()=>{
-    partida = new Partida(cantidadJugadores,2);
+    document.querySelector("#btn_jugar").removeEventListener('click', iniciar_juego);
+    partida = new Partida(cantidadJugadores);
     mostrarCartasJugador();
     mostrarCartasCPUs();
     document.querySelectorAll(".carta").forEach(c =>c.addEventListener('click', juegaPersona));
@@ -68,9 +69,7 @@ const iniciar_juego= ()=>{
 const juegaPersona =  e =>{
    if (partida.movimientoJugador(parseInt(e.target.id))!=-1) {
         mover_Carta(e);
-      //  wait(1000);
         jueganCPUs()
-        // setTimeout(jueganCPUs(), 3000); probé con esto pero no logré que se viera la jugada del otro
     }
 }
 
@@ -79,17 +78,14 @@ const jueganCPUs = () =>{
     while (partida.turno && partida.ganador==-1){
         jugadaActual = partida.movimientoCPU();
         wait(500);
-    //    setTimeout(function(){}, 5000)
-        console.log("ha esperado");
         if (jugadaActual!=-1) mostrarCartaJugada(jugadaActual);
     }
     if (partida.ganador!=-1) partidaFinalizada();
 }
 
 const partidaFinalizada = () =>{
-    partida.ganador? alert(`Ganó , ${partida.ganador}`) : alert("Has ganado"); // eliminar todos los addeventlistener
+    partida.ganador? alert(`Ganó , ${partida.ganador}`) : alert("Has ganado");
     document.querySelectorAll(".carta").forEach(c =>c.removeEventListener('click', juegaPersona));
-    document.querySelector("#btn_jugar").removeEventListener('click', iniciar_juego);
     document.querySelector("#saltarTurno").removeEventListener('click', saltarTurno);
 }
 
@@ -102,7 +98,6 @@ const mover_Carta = e =>{
 const saltarTurno = () =>{
     partida.pasarTurno();
     jueganCPUs()
-    //setTimeout(jueganCPUs(), 10000);
 }
 
 document.querySelector("#btn_jugar").addEventListener('click', iniciar_juego);

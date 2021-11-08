@@ -17,25 +17,7 @@ class Mano_Cartas{
 class Mano_Cartas_Ordenador extends Mano_Cartas{
     constructor(cartasElegidas){
         super(cartasElegidas);
-     //   this._conveniencia = catalogar(cartasElegidas);
     }
-    // catalogar(cartas){
-
-    //     let cantCartas = this._jugadores[this._turno].eliminar_carta(carta);
-    //     if (!cantCartas) return true;
-    //     this._posiblesJugadas.splice(this._posiblesJugadas.indexOf(carta),1);
-    //     if (carta == 4){
-    //         for (let i=1; i<4;i++) this._posiblesJugadas.push(i*10+4);
-    //     }
-    //     if (carta%10 == 4){
-    //         this._posiblesJugadas.push(carta-1);
-    //         this._posiblesJugadas.push(carta+1);
-    //     }
-    //     if (carta%10>0 && carta%10<4) this._posiblesJugadas.push(carta-1);
-    //     if (carta%10<9 && carta%10>4) this._posiblesJugadas.push(carta+1);
-    //     this._posiblesJugadas.sort((a,b)=>a-b);
-    //     return false    
-    // }
     jugar(posicionesDisponibles){
         let coincidencia=[];
         posicionesDisponibles.forEach(e =>{ if (this._cartas.includes(e)) coincidencia.push(e); });
@@ -43,13 +25,6 @@ class Mano_Cartas_Ordenador extends Mano_Cartas{
         coincidencia.length? cartaAJugar = coincidencia[numAleatorio(0, coincidencia.length-1)]: cartaAJugar= -1;
         return cartaAJugar;
     }
-    // jugarInteligente(posicionesDisponibles){
-    //     let coincidencia=[];
-    //     posicionesDisponibles.forEach(e =>{ if (this._cartas.includes(e)) coincidencia.push(e); });
-    //     let cartaAJugar;
-    //     coincidencia.length? cartaAJugar = coincidencia[numAleatorio(0, coincidencia.length-1)]: cartaAJugar= -1;
-    //     return cartaAJugar;
-    // }
 }
 
 class Mano_Cartas_Persona extends Mano_Cartas{
@@ -61,7 +36,7 @@ class Mano_Cartas_Persona extends Mano_Cartas{
 }
 
 class Partida{
-    constructor(cant_jugadores,dificultad){
+    constructor(cant_jugadores){
         this._cantidad_jugadores = cant_jugadores;
         let cartas_Repartidas = this.repartirCartas();
         this._jugadores=[];
@@ -105,9 +80,6 @@ class Partida{
     devolverManoJugador(num_jugador){
         return this._jugadores[num_jugador];
     } 
-    // hayGanador(){
-    //     return !this._jugadores[this._turno].numero_cartas();
-    // }
     movimientoCPU(){
         let jugadaActual;
         jugadaActual = this._jugadores[this._turno].jugar(this._posiblesJugadas);

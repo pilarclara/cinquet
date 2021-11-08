@@ -156,7 +156,7 @@ body { user-select: none;}
 .carta_12 {grid-row:13/16;}
 .carta_13 {grid-row:14/17;}
 
-.carta_oro, .col1{ grid-column: 1/2;}
+.carta_oro, .col0{ grid-column: 1/2;}
 .carta_copa{ grid-column: 2/3;}
 .carta_espada{ grid-column: 3/4;}
 .carta_basto{ grid-column: 4/5;}

@@ -12,6 +12,7 @@ body { user-select: none;}
     font-family: 'Faustina', serif;
     font-size: 1.3em;
     border-radius: .5rem;
+    text-align: center;
 }
 
 #cartas_jugador{
@@ -27,7 +28,10 @@ body { user-select: none;}
     column-gap: 1rem;
     /*margin: 0rem 8rem;*/
     width: 92vw;
-    min-height: 35rem;
+   /* min-height: 35rem;*/
+
+   max-height: 92vh;
+
     
 }
 
@@ -68,7 +72,9 @@ body { user-select: none;}
     color: white;
 }
 
-
+#cartas_ordenador1, #cartas_jugadas, #cartas_ordenador2 {
+    height: 37rem;
+}
 
 #cartas_jugadas{ 
     grid-area:2/2/3/3; 
@@ -79,7 +85,7 @@ body { user-select: none;}
     border: 4px solid #419B98;
     border-radius: .5rem;
     justify-items: center;
-    max-height: 34.5rem;
+    
 }
 #cartas_jugadas img {
     width: 7rem;
@@ -87,14 +93,13 @@ body { user-select: none;}
 
 #cartas_ordenador1{ 
     grid-area: 2/1/3/2;
-    
 }
 
 #cartas_ordenador1 img, #cartas_ordenador2 img {
-    width:9rem;
+    width:8.5rem;
 }
 #cartas_ordenador1 div, #cartas_ordenador2 div {
-
+    justify-items: center;
 }
 #cartas_ordenador2{ 
     grid-area: 2/3/3/4;
@@ -105,6 +110,7 @@ body { user-select: none;}
     display: grid; 
     grid-template-columns: 1fr;
     grid-template-rows: repeat(14 1fr);
+    
 }
 
 #txt_cartas_jugador {
@@ -123,7 +129,7 @@ body { user-select: none;}
     grid-template-columns: repeat(14 1fr);
     margin-top: 0.5rem;
     padding:  0.2rem .5rem;
-    height: 11rem;
+    height: 10rem;
     border-radius: .5rem;
 }
 
@@ -131,13 +137,13 @@ body { user-select: none;}
 
 #cartas_jugador img {
     cursor: pointer;
-    width: 5.5rem;
+    width: 5rem;
 }
 
 
 #cartas_jugadas img{
     
-    width: 9rem;
+    width: 5rem;
 }
 
 #cartas_jugadas{
@@ -253,8 +259,4 @@ body { user-select: none;}
     font-size: 1.2em;
     padding-bottom: 0.5rem;
     padding-left: 0.5rem;
-}
-
-#cartas_jugadas img {
-    width: 5rem;
 }

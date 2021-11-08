@@ -45,7 +45,7 @@ const mostrarReverso = (zona, num )=>{
     let nueva_carta = document.createElement('img');
     nueva_carta.src = `/public/images/baraja_espanyola/carta_reverso.png`;
     nueva_carta.classList.toggle(`carta_${num}`);
-    nueva_carta.classList.toggle(`col1`);
+    nueva_carta.classList.toggle(`col0`);
     console.log(zona);
     document.getElementById(zona).appendChild(nueva_carta)
 }

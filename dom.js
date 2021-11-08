@@ -20,6 +20,7 @@ const crearImagenCarta = carta =>{
     nueva_carta.id = carta;
     return nueva_carta;
 }
+
 const mostrarCarta = (carta,i)=>{
     let nueva_carta = crearImagenCarta(carta);
     nueva_carta.classList.toggle("carta");
@@ -59,7 +60,7 @@ const mostrarCartasCPUs = () =>{
     let mano;
     for (let j = 1; j<cantidadJugadores; j++){
         mano = partida.jugadores[j];
-        for (let i= 0; i<mano.cartas.length; i++) mostrarReverso(`zona_carta_reverso${j}`,i);    
+        for (let i= 1; i<mano.cartas.length; i++) mostrarReverso(`zona_carta_reverso${j}`,i);    
     }
 }
 
@@ -90,25 +91,20 @@ const jueganCPUs = () =>{
 
 const partidaFinalizada = () =>{
     const popup = document.querySelector('.popup-wrapper');
-    const popup_txt = document.querySelector('.popup-text').textContent = `Ha ganado el jugador: CPU${partida.ganador}`;
+    const popup_txt = document.querySelector('.popup-text').textContent = `Ha ganado el jugador: CPU ${partida.ganador}`;
     if (partida.ganador) {
         popup.style.display = 'block';
         popup_txt; }
-    if (partida.ganador == 0) {
+    else {
         popup.style.display = 'block';
-        document.querySelector('.popup-text').textContent = `¡Has ganado!`; }
-
-    //partida.ganador? alert(`Ganó , ${partida.ganador}`) : alert("Has ganado");
-    //partida.ganador? alert(`Ganó , ${partida.ganador}`) : popup.style.display = 'block';
-    
+        document.querySelector('.popup-text').textContent = `¡Has ganado!`; 
+    }
     document.querySelectorAll(".carta").forEach(c =>c.removeEventListener('click', juegaPersona));
     document.querySelector("#saltarTurno").removeEventListener('click', saltarTurno);
 
     popup.addEventListener('click', e => {
-        if(e.target.className === 'popup-wrapper' || 'popup-close' ) {
-        popup.style.display = 'none';
-        }
-        });
+        if(e.target.className === 'popup-wrapper' || 'popup-close' ) popup.style.display = 'none';
+    });
 }
 
 const mover_Carta = e =>{

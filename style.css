@@ -87,8 +87,8 @@ body { user-select: none;}
 
 #cartas_ordenador1{ 
     grid-area: 2/1/3/2;
-    display: flex; 
-    flex-direction: column; 
+    display: grid; 
+    grid-template-columns: 1fr;
 }
 #cartas_ordenador1 div, #cartas_ordenador2 div {
     margin-top: 5rem;
@@ -96,8 +96,8 @@ body { user-select: none;}
 }
 #cartas_ordenador2{ 
     grid-area: 2/3/3/4;
-    display: flex;
-    flex-direction: column;
+    display: grid; 
+    grid-template-columns: 1fr;
 }
 
 #txt_cartas_jugador {
@@ -117,9 +117,7 @@ body { user-select: none;}
     border-radius: .5rem;
 }
 
-#cartas_ordenador1, #cartas_jugadas, #cartas_ordenador2 {
-    
-}
+
 
 #cartas_jugador img {
     cursor: pointer;
@@ -169,6 +167,8 @@ body { user-select: none;}
 .carta_espada{ grid-column: 3/4;}
 .carta_basto{ grid-column: 4/5;}
 
+/* Animaciones */
+
 @-webkit-keyframes slide_up {
     0%   { transform: translate(0px,200px); }
     100% { transform: translate(0px,0px); }
@@ -185,13 +185,22 @@ body { user-select: none;}
     0%   { transform: translate(0px,200px); }
     100% { transform: translate(0px,0px); }
   }
-  
-img{
+
+
+  img{
     /*background-color: skyblue;*/
     animation-name: slide_up;
     animation-duration: 4s; 
     animation-fill-mode: forwards; 
 }
+
+.animacion-slide-left{
+    animation-name: slide-left;
+    animation-duration: 4s;
+}
+
+/*---------------------*/
+
 
 #saltarTurno {
     grid-area: 3/1;

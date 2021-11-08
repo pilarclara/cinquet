@@ -26,15 +26,13 @@ const mostrarCarta = carta=>{
 }
 
 const mostrarCartaJugada= (carta)=>{
-    colocarCartaJugada(crearImagenCarta(carta)); //valorar si eliminar mostrarCartaJugada
+    colocarCartaJugada(crearImagenCarta(carta)); 
 }
 
 const colocarCartaJugada = e => {
     e.classList.toggle(`carta_${e.id%10}`);
-    if (e.id <=9) document.querySelector("#zona_oro").appendChild(e);
-    if (e.id >=10 && e.id <=19) document.querySelector("#zona_copa").appendChild(e);
-    if (e.id >=20 && e.id <=29) document.querySelector("#zona_espada").appendChild(e);
-    if (e.id >=30 && e.id <=39) document.querySelector("#zona_basto").appendChild(e);
+    e.classList.toggle(`carta_${nombre_palo[parseInt(e.id/10)]}`);
+    document.querySelector("#cartas_jugadas").appendChild(e);
 }
 
 const mostrarCartasJugador= ()=>{

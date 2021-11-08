@@ -1,9 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Faustina&family=Source+Serif+Pro&display=swap');
 
-body {
-    user-select: none;
-}
+body { user-select: none;}
 
 .zona_ordenador{
     /*width: 15vw;*/
@@ -111,10 +109,9 @@ body {
     text-align: center;
     padding:  0.2rem .5rem;
     height: 11rem;
-   
     border-radius: .5rem;
-    
 }
+
 #cartas_jugador img {
     cursor: pointer;
     width: 5.5rem;
@@ -134,86 +131,34 @@ body {
     justify-self: center;
 }
 
-#zona_oro {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(12 1fr);
-    grid-area: 1;
-    /*background-color:darkorange;*/
-}
-
-#zona_copa {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(12 1fr);
-    grid-area: 1/2;
-    /*background-color:darkred;*/
-}
-#zona_espada {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(12 1fr);
-    grid-area: 1/3;
-    /*background-color:darkblue;*/
-}
-
-#zona_basto {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(12 1fr);
-    grid-area: 1/4;
-    /*background-color:darkgreen;*/
-}
-
-#zona_oro, #zona_copa, #zona_espada, #zona_basto{
-    text-align: center;
-}
-
-#zona_oro img, #zona_copa img, #zona_espada img, #zona_basto img{
+#cartas_jugadas img{
     padding:0 1rem;
     width: 8rem;
 }
 
-.carta_0 {
-    grid-row: 1/3;
-    grid-column: 1/2;
+#cartas_jugadas{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 1rem;
+    grid-template-rows: repeat(12, 1fr);
+    text-align: center;
 }
-.carta_1 {
-    grid-row: 2/5;
-    grid-column: 1/2;
-}
-.carta_2 {
-    grid-row: 3/6;
-    grid-column: 1/2;
-}
-.carta_3 {
-    grid-row:4/7;
-    grid-column: 1/2;
-}
-.carta_4 {
-    grid-row:5/8;
-    grid-column: 1/2;
-}
-.carta_5 {
-    grid-row:6/9;
-    grid-column: 1/2;
-}
-.carta_6 {
-    grid-row: 7/10;
-    grid-column: 1/2;
-}
-.carta_7 {
-    grid-row: 8/11;
-    grid-column: 1/2;
-}
-.carta_8{
-    grid-row:9/12;
-    grid-column: 1/2;
-}
-.carta_9 {
-    grid-row:10/12;
-    grid-column: 1/2;
-}
+
+.carta_0 { grid-row: 1/3;}
+.carta_1 { grid-row: 2/5;}
+.carta_2 { grid-row: 3/6;}
+.carta_3 { grid-row:4/7;}
+.carta_4 { grid-row:5/8;}
+.carta_5 { grid-row:6/9;}
+.carta_6 { grid-row: 7/10;}
+.carta_7 { grid-row: 8/11;}
+.carta_8{ grid-row:9/12;}
+.carta_9 { grid-row:10/12;}
+
+.carta_oro{ grid-column: 1/2;}
+.carta_copa{ grid-column: 2/3;}
+.carta_espada{ grid-column: 3/4;}
+.carta_basto{ grid-column: 4/5;}
 
 @-webkit-keyframes slide {
     0%   { transform: translate(0px,200px); }

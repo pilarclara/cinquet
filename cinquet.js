@@ -129,6 +129,7 @@ class Partida{
     }
     get turno(){ return this._turno;}
     get ganador(){ return this._ganador;}
+    get jugadores(){ return this._jugadores;}
 }
 
 export {Partida, Mano_Cartas}

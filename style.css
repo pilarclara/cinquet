@@ -183,6 +183,7 @@ img{
     animation-duration: 4s; 
     animation-fill-mode: forwards; 
 }
+
 #saltarTurno {
     grid-area: 3/1;
     justify-self: right;

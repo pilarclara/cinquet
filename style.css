@@ -160,26 +160,26 @@ body { user-select: none;}
 .carta_espada{ grid-column: 3/4;}
 .carta_basto{ grid-column: 4/5;}
 
-@-webkit-keyframes slide {
+@-webkit-keyframes slide_up {
     0%   { transform: translate(0px,200px); }
     100% { transform: translate(0px,0px); }
   }
-  @-moz-keyframes slide {
+  @-moz-keyframes slide_up {
     0%   { transform: translate(0px,200px); }
     100% { transform: translate(0px,0px); }
   }
-  @-o-keyframes slide {
+  @-o-keyframes slide_up {
     0%   { transform: translate(0px,200px); }
     100% { transform: translate(0px,0px); }
   }
-  @keyframes slide {
+  @keyframes slide_up {
     0%   { transform: translate(0px,200px); }
     100% { transform: translate(0px,0px); }
   }
   
 img{
     /*background-color: skyblue;*/
-    animation-name: slide;
+    animation-name: slide_up;
     animation-duration: 4s; 
     animation-fill-mode: forwards; 
 }

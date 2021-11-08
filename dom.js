@@ -89,9 +89,26 @@ const jueganCPUs = () =>{
 }
 
 const partidaFinalizada = () =>{
-    partida.ganador? alert(`Ganó , ${partida.ganador}`) : alert("Has ganado");
+    const popup = document.querySelector('.popup-wrapper');
+    const popup_txt = document.querySelector('.popup-text').textContent = `Ha ganado el jugador: CPU${partida.ganador}`;
+    if (partida.ganador) {
+        popup.style.display = 'block';
+        popup_txt; }
+    if (partida.ganador == 0) {
+        popup.style.display = 'block';
+        document.querySelector('.popup-text').textContent = `¡Has ganado!`; }
+
+    //partida.ganador? alert(`Ganó , ${partida.ganador}`) : alert("Has ganado");
+    //partida.ganador? alert(`Ganó , ${partida.ganador}`) : popup.style.display = 'block';
+    
     document.querySelectorAll(".carta").forEach(c =>c.removeEventListener('click', juegaPersona));
     document.querySelector("#saltarTurno").removeEventListener('click', saltarTurno);
+
+    popup.addEventListener('click', e => {
+        if(e.target.className === 'popup-wrapper' || 'popup-close' ) {
+        popup.style.display = 'none';
+        }
+        });
 }
 
 const mover_Carta = e =>{
@@ -102,7 +119,7 @@ const mover_Carta = e =>{
 
 const saltarTurno = () =>{
     partida.pasarTurno();
-    jueganCPUs()
+    jueganCPUs();
 }
 
 document.querySelector("#btn_jugar").addEventListener('click', iniciar_juego);

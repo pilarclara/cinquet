@@ -113,6 +113,10 @@ body { user-select: none;}
     
 }
 
+#zona_carta_reverso2 img { animation-name: slide_left;}
+
+#zona_carta_reverso1 img { animation-name: slide_right;}
+
 #txt_cartas_jugador {
     grid-area: 3/1;
     display: flex;
@@ -140,6 +144,7 @@ body { user-select: none;}
 #cartas_jugador img {
     cursor: pointer;
     width: 5rem;
+    animation-name: slide_up;
 }
 
 
@@ -148,8 +153,11 @@ body { user-select: none;}
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     column-gap: 1rem;
-    grid-template-rows: repeat(12, 1fr);
-    
+    grid-template-rows: repeat(12, 1fr); 
+}
+
+img{
+    animation-name: slide_up;
 }
 
 /* GRID APILAR CARTAS */
@@ -277,7 +285,7 @@ body { user-select: none;}
 
   img{
     /*background-color: skyblue;*/
-    animation-name: slide_left;
+ /*   animation-name: slide_left;*/
     animation-duration: 4s; 
     animation-fill-mode: forwards; 
 }

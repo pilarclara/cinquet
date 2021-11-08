@@ -26,7 +26,6 @@ const mostrarCarta = (carta,i)=>{
     nueva_carta.classList.toggle(`col${i}`);
     nueva_carta.classList.toggle("carta_0");
     document.querySelector('#cartas_jugador') .appendChild(nueva_carta);
-    nueva_carta.classList.toggle('.animacion-slide-up');
 }
 
 const mostrarCartaJugada= (carta, i)=>{
@@ -36,11 +35,11 @@ const mostrarCartaJugada= (carta, i)=>{
 }
 
 const colocarCartaJugada = (e,i) => {
-    (i == 2)? e.classList('animacion-slide-left'): e.classList('animacion-slide-right');
     e.classList.toggle(`carta_${e.id%10}`);
     e.classList.toggle(`carta_${nombre_palo[parseInt(e.id/10)]}`);
     document.querySelector("#cartas_jugadas").appendChild(e);
-    (i == 2)? e.classList('animacion-slide-left'): e.classList('animacion-slide-right');
+    if (i == 2) e.classList.toggle('animacion-slide-left');
+    if (i == 1) e.classList.toggle('animacion-slide-right');
 }
 
 const mostrarCartasJugador= ()=>{
@@ -53,7 +52,6 @@ const mostrarReverso = (zona, num )=>{
     nueva_carta.src = `/public/images/baraja_espanyola/carta_reverso.png`;
     nueva_carta.classList.toggle(`carta_${num}`);
     nueva_carta.classList.toggle(`col0`);
-    console.log(zona);
     document.getElementById(zona).appendChild(nueva_carta)
 }
 

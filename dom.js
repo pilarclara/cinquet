@@ -28,7 +28,9 @@ const mostrarCarta = (carta,i)=>{
     document.querySelector('#cartas_jugador') .appendChild(nueva_carta)
 }
 
-const mostrarCartaJugada= (carta)=>{
+const mostrarCartaJugada= (carta, i)=>{
+    let list = document.getElementById(`zona_carta_reverso${i}`);
+    list.removeChild(list.childNodes[0]);
     colocarCartaJugada(crearImagenCarta(carta)); 
 }
 
@@ -77,10 +79,10 @@ const juegaPersona =  e =>{
 
 const jueganCPUs = () =>{
     let jugadaActual;
-    while (partida.turno && partida.ganador==-1){
+    for (let i = 1; i< cantidadJugadores && partida.ganador==-1; i++){
         jugadaActual = partida.movimientoCPU();
-        wait(500);
-        if (jugadaActual!=-1) mostrarCartaJugada(jugadaActual);
+        wait(300);
+        if (jugadaActual!=-1) mostrarCartaJugada(jugadaActual,i);
     }
     if (partida.ganador!=-1) partidaFinalizada();
 }

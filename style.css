@@ -30,7 +30,7 @@ body { user-select: none;}
     width: 92vw;
    /* min-height: 35rem;*/
 
-   max-height: 92vh;
+   max-height: 80vh;
 
     
 }
@@ -203,6 +203,7 @@ body { user-select: none;}
     animation-name:slide_down;
 }
 
+
 @-webkit-keyframes slide_up {
     0%   { transform: translate(0px,200px); }
     100% { transform: translate(0px,0px); }
@@ -220,26 +221,63 @@ body { user-select: none;}
     100% { transform: translate(0px,0px); }
   }
 
+
   @-webkit-keyframes slide_left {
-    0%   { transform: translate(0px,200px); }
+    0%   { transform: translate(100px,0px); }
     100% { transform: translate(0px,0px); }
   }
   @-moz-keyframes slide_left {
-    0%   { transform: translate(0px,200px); }
+    0%   { transform: translate(100px,0px); }
     100% { transform: translate(0px,0px); }
   }
   @-o-keyframes slide_left {
-    0%   { transform: translate(0px,200px); }
+    0%   { transform: translate(100px,0px); }
     100% { transform: translate(0px,0px); }
   }
   @keyframes slide_left{
-    0%   { transform: translate(0px,200px); }
+    0%   { transform: translate(100px,0px); }
     100% { transform: translate(0px,0px); }
   }
 
+
+  @-webkit-keyframes slide_right {
+    0%   { transform: translate(-200px,0px); }
+    100% { transform: translate(0px,0px); }
+  }
+  @-moz-keyframes slide_right {
+    0%   { transform: translate(-200px,0px); }
+    100% { transform: translate(0px,0px); }
+  }
+  @-o-keyframes slide_right {
+    0%   { transform: translate(-200px,0px); }
+    100% { transform: translate(0px,0px); }
+  }
+  @keyframes slide_right{
+    0%   { transform: translate(-200px,0px); }
+    100% { transform: translate(0px,0px); }
+  }
+
+  @-webkit-keyframes slide_down {
+    0%   { transform: translate(0px,-200px); }
+    100% { transform: translate(0px,0px); }
+  }
+  @-moz-keyframes slide_down {
+    0%   { transform: translate(0px,-200px); }
+    100% { transform: translate(0px,0px); }
+  }
+  @-o-keyframes slide_down {
+    0%   { transform: translate(0px,-200px); }
+    100% { transform: translate(0px,0px); }
+  }
+  @keyframes slide_down{
+    0%   { transform: translate(0px,-200px); }
+    100% { transform: translate(0px,0px); }
+  }
+
+
   img{
     /*background-color: skyblue;*/
-    animation-name: slide_up;
+    animation-name: slide_left;
     animation-duration: 4s; 
     animation-fill-mode: forwards; 
 }

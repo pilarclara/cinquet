@@ -124,7 +124,6 @@ body { user-select: none;}
     width: 5.5rem;
 }
 
-
 .carta-reverso {
     width: 11rem;
     position: absolute;
@@ -160,7 +159,7 @@ body { user-select: none;}
 .carta_6 { grid-row: 7/10;}
 .carta_7 { grid-row: 8/11;}
 .carta_8{ grid-row:9/12;}
-.carta_9 { grid-row:10/12;}
+.carta_9 { grid-row:10/13;}
 
 .carta_oro{ grid-column: 1/2;}
 .carta_copa{ grid-column: 2/3;}

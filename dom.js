@@ -41,21 +41,19 @@ const mostrarCartasJugador= ()=>{
     for (let i= 0; i<mano.cartas.length; i++) mostrarCarta(mano.cartas[i]);
 }
 
-const mostrarReverso = zona =>{
+const mostrarReverso = (zona, num )=>{
     let nueva_carta = document.createElement('img');
     nueva_carta.src = `/public/images/baraja_espanyola/carta_reverso.png`;
-    nueva_carta.classList.toggle("derecha");
-    let cad = `zona_carta_reverso`;
-    cad.concat(zona.toString());
-    console.log(cad);
-    document.getElementById(cad).appendChild(nueva_carta)
+    nueva_carta.classList.toggle(`carta_${num}`);
+    console.log(zona);
+    document.getElementById(zona).appendChild(nueva_carta)
 }
 
 const mostrarCartasCPUs = () =>{
     let mano;
-    for (let j = 0; j<cantidadJugadores-1; j++){
+    for (let j = 1; j<cantidadJugadores; j++){
         mano = partida.jugadores[j];
-        for (let i= 0; i<mano.cartas.length; i++) mostrarReverso(j);    
+        for (let i= 0; i<mano.cartas.length; i++) mostrarReverso(`zona_carta_reverso${j}`,i);    
     }
 }
 

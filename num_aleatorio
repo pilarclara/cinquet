@@ -1,5 +1,0 @@
-function numAleatorio(min, max){
-    return Math.trunc(Math.random() * (max - min + 1) + 1);
-}
-
-for (i = 0;i<100;i++){ console.log(numAleatorio(0,5))}
